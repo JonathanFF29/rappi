@@ -1,0 +1,249 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>El Baratón</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <ion-row wrap>
+
+      <ion-col class="display" col-12 col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-20>
+        <div style="height: 120px;width: 100px;margin-left: 33%;">
+          <img src="../assets/imgs/rappi.png">
+        </div>
+        <ion-row style="background-color:white;margin:2%;padding:2%;">
+          <p style="text-align: center;font-size:12pt;color:black">Filtros</p>
+        </ion-row>
+        <ion-row style="background-color:white;margin:2%;padding:2%;">
+
+          <ion-col col-6 col-xl-8 col-lg-12 col-md-6 col-sm-4 col-xs-3>
+            <div>
+              <p style="color:#FB5B5B;font-size:10pt;">
+                <ion-icon name="thumbs-up" item-star large></ion-icon> Por disponibilidad</p>
+            </div>
+          </ion-col>
+
+          <ion-col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-6 col-xs-3>
+            <div style="display: flex;justify-content: space-between;">
+              <button (click)="filtrarPorDisponibilidad(true)" ion-button style="background:#FB5B5B;text-align:center;">
+                disponible
+              </button>
+              <button (click)="filtrarPorDisponibilidad(false)" ion-button style="background:#FB5B5B;text-align:center;">
+                agotado
+              </button>
+            </div>
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row style="background-color:white;margin:2%;padding:2%;">
+
+          <ion-col col-6 col-xl-8 col-lg-12 col-md-6 col-sm-4 col-xs-3>
+            <div>
+              <p style="color:#FB5B5B;font-size:10pt;">
+                <ion-icon name="logo-usd" item-star large></ion-icon> Por precio</p>
+            </div>
+          </ion-col>
+
+          <ion-col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-6 col-xs-3>
+            <div style="display: flex;justify-content: space-between;">
+              <ion-input style="color:#000000;font-size:10pt;" type="text" [(ngModel)]="precio" placeholder="ingrese el precio"></ion-input>
+              <button (click)="filtrarPorPrecio()" ion-button style="background:#FB5B5B;text-align:center;">
+                Aceptar
+              </button>
+            </div>
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row style="background-color:white;margin:2%;padding:2%;">
+
+          <ion-col col-6 col-xl-8 col-lg-12 col-md-6 col-sm-4 col-xs-3>
+            <div>
+              <p style="color:#FB5B5B;font-size:10pt;">
+                <ion-icon name="stats" item-star large></ion-icon> Por cantidad</p>
+            </div>
+          </ion-col>
+
+          <ion-col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-6 col-xs-3>
+            <div style="display: flex;justify-content: space-between;">
+              <ion-input style="color:#000000;font-size:10pt;" type="text" [(ngModel)]="cantidad" placeholder="ingrese la cantidad"></ion-input>
+              <button (click)="filtrarPorCantidad()" ion-button style="background:#FB5B5B;text-align:center;">
+                Aceptar
+              </button>
+            </div>
+          </ion-col>
+
+        </ion-row>
+        <ion-row style="background-color:white;margin:2%;padding:2%;">
+          <p style="text-align: center;font-size:12pt;color:black">Ordenar por:</p>
+        </ion-row>
+        <ion-row style="background-color:white;margin:2%;padding:2%;">
+
+          <ion-col col-12 col-xl-12 col-lg-22 col-md-12 col-sm-10 col-xs-3>
+            <div style="display: flex;justify-content: space-between;">
+              <button (click)="ordenarPorCantidad(1)" ion-button style="background:#FB5B5B;text-align:center;font-size:8pt;">
+                precio
+              </button>
+              <button (click)="ordenarPorCantidad(2)" ion-button style="background:#FB5B5B;text-align:center;font-size:8pt;">
+                disponible
+              </button>
+              <button (click)="ordenarPorCantidad(3)" ion-button style="background:#FB5B5B;text-align:center;font-size:8pt;">
+                cantidad
+              </button>
+            </div>
+          </ion-col>
+
+        </ion-row>
+
+      </ion-col>
+      <ion-col class="display2" col-12 col-xl-3 col-lg-3 col-md-4 col-sm-12 col-xs-20>
+        <ion-row style="background-color:white;">
+
+          <ion-col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-6 col-xs-3>
+            <div style="display: flex;justify-content: space-between;">
+              <button (click)="ordenarfiltrar(1)" ion-button style="background:#FB5B5B;text-align:center;width:50%;">
+                filtrar
+              </button>
+              <button (click)="ordenarfiltrar(2)" ion-button style="background:#FB5B5B;text-align:center;width:50%;">
+                ordenar
+              </button>
+            </div>
+          </ion-col>
+
+        </ion-row>
+        <ion-row *ngIf="mostrarfiltrar" style="background-color:white;">
+
+          <ion-col col-12 col-xl-12 col-lg-22 col-md-12 col-sm-10 col-xs-3>
+            <div style="display: flex;justify-content: space-between;">
+              <button (click)="filtrar(1)" ion-button style="background:#FB5B5B;text-align:center;font-size:8pt;width:30%;">
+                disponibilidad
+              </button>
+              <button (click)="filtrar(2)" ion-button style="background:#FB5B5B;text-align:center;font-size:8pt;width:30%;">
+                por precio
+              </button>
+              <button (click)="filtrar(3)" ion-button style="background:#FB5B5B;text-align:center;font-size:8pt;width:30%;">
+                por cantidad
+              </button>
+            </div>
+          </ion-col>
+
+        </ion-row>
+        <ion-row *ngIf="mostrarordenar" style="background-color:white;">
+
+          <ion-col col-12 col-xl-12 col-lg-22 col-md-12 col-sm-10 col-xs-3>
+            <div style="display: flex;justify-content: space-between;">
+              <button (click)="ordenarPorCantidad(1)" ion-button style="background:#FB5B5B;text-align:center;font-size:8pt;width:30%;">
+                precio
+              </button>
+              <button (click)="ordenarPorCantidad(2)" ion-button style="background:#FB5B5B;text-align:center;font-size:8pt;width:30%;">
+                disponible
+              </button>
+              <button (click)="ordenarPorCantidad(3)" ion-button style="background:#FB5B5B;text-align:center;font-size:8pt;width:30%;">
+                cantidad
+              </button>
+            </div>
+          </ion-col>
+
+        </ion-row>
+
+
+      </ion-col>
+      <ion-col col-12 col-xl-9 col-lg-9 col-md-8 col-sm-12 col-xs-20>
+        <div class="navbar">
+          <div class="dropdown" *ngFor="let categoria of categorias.categories">
+            <button class="dropbtn" (click)="desplegar(categoria.id)">{{categoria.name}}
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" id="{{categoria.id}}">
+              <ion-col *ngFor="let sublevel of categoria.sublevels">
+                <a (click)="desplegar1(sublevel.id, sublevel)">{{sublevel.name}}</a>
+
+                <div class="dropdown-contenta" id="{{sublevel.id}}">
+                  <ion-col *ngFor="let sublevel2 of sublevel.sublevels">
+                    <a (click)="desplegar2(sublevel2.id, sublevel2)">{{sublevel2.name}}</a>
+
+                    <div class="dropdown-contentc" id="{{sublevel2.id}}">
+                      <ion-col *ngFor="let sublevel3 of sublevel2.sublevels">
+                        <a (click)="desplegar3(sublevel3)">{{sublevel3.name}}</a>
+                      </ion-col>
+                    </div>
+
+
+                  </ion-col>
+                </div>
+
+              </ion-col>
+            </div>
+          </div>
+        </div>
+        <ion-row>
+          <ion-col *ngFor="let producto of productosSeleccionado" col-6 col-xl-4 col-lg-6 col-md-6 col-sm-5 col-xs-3>
+
+
+            <div style="height: 120px;width: 100px;margin-left: 33%;">
+              <img src="{{imagen}}">
+            </div>
+            <h2 style="color:black;font-size:10pt;text-align:center;">Nombre: {{producto.name}}</h2>
+            <h2 style="color:black;font-size:10pt;text-align:center;">Cantidad: {{producto.quantity}}</h2>
+            <h2 style="color:black;font-size:10pt;text-align:center;">Precio:$ {{producto.price}}</h2>
+            <h2 style="color:black;font-size:10pt;text-align:center;">disponible: {{producto.available}}</h2>
+            <div *ngIf="producto.cantidad  == 0">
+              <button *ngIf="producto.available == true" ion-button style="background:#00ff00;text-align:center;margin-left: 35%;">
+                <div (click)="agregarArticulo(producto)" style="text-align:center;color:white;">Agregar</div>
+              </button>
+              <button *ngIf="producto.available == false" ion-button style="background:#FB5B5B;text-align:center;margin-left: 35%;">
+                <div style="text-align:center;color:white;">Agotado</div>
+              </button>
+            </div>
+            <div style="text-align: center;" *ngIf="producto.cantidad > 0">
+              <button ion-button style="background:white;text-align:center;width:60%;">
+                <ion-icon style="color:#FB5B5B;" name="USD"></ion-icon>
+                <div style="text-align:center;color:black;background-color:white;">
+                  <ion-icon (click)="quitarCantidadArticulos(producto)" style="font-size: 1.9em;margin-right: 20%;color:#FB5B5B" name="remove-circle"></ion-icon>
+                  {{producto.cantidad}}
+                  <ion-icon (click)="agregarCantidadArticulos(producto)" style="font-size: 1.9em;margin-left: 10%;color:#FB5B5B" name="add-circle"></ion-icon>
+                </div>
+              </button>
+            </div>
+
+          </ion-col>
+        </ion-row>
+
+      </ion-col>
+
+
+    </ion-row>
+
+
+
+  </ion-grid>
+</ion-content>
+<ion-footer (click)="pedidoActual()" class="footerTitle" no-border>
+  <div style="display:flex;">
+    <ion-row>
+      <ion-col style="background:#FB5B5B;">
+        <button ion-button icon-left clear small>
+
+          <div style="text-align:center;color:#000000;display: flex;justify-content: space-between;">
+
+            <p style="color:white;font-size:0.5 rem">Tu pédido: </p>
+            <p style="color:white;font-size:0.1 rem"> .............</p>
+            <p style="color:white;font-size:1.4 rem">$ {{valorAcumulado}}</p>
+
+          </div>
+          <ion-icon style="color:white;text-align:center;" name="cart" right></ion-icon>
+
+        </button>
+      </ion-col>
+    </ion-row>
+
+
+  </div>
+</ion-footer>

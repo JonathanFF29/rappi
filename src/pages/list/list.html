@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Compra Actual</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-scroll style="height:100%;" scrollY="true">
+    <div>
+
+      <ion-list *ngFor="let articulo of data">
+        <ion-item>
+          <ion-avatar style="width: 90px;height: 90px;" item-start>
+            <p style="text-align: right;">Cantidad: {{articulo.cantidad}}</p>
+            <img style="width: 90px;height: 90px;" src="{{articulo.imagen}}">
+
+          </ion-avatar>
+          <div style="display: flex;justify-content: space-between;text-align:center;">
+            <div>
+              <h4 style="padding-top: 5%;color:#000000;text-align: left;">Nombre: {{articulo.name}}</h4>
+              <h5 style="padding-top: 30%;color:#999999;">${{articulo.price}}</h5>
+            </div>
+            <div style="padding-left: 5%;">
+
+              <ion-icon (click)="quitarCantidadArticulos(articulo)" style="font-size: 1.9em;color:#FB5B5B" name="remove-circle"></ion-icon>
+              <ion-icon (click)="agregarCantidadArticulos(articulo)" style="font-size: 1.9em;color:#FB5B5B"  name="add-circle"></ion-icon>
+
+
+             
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div style="display: flex;justify-content: space-between;">
+      <div>
+        
+        <h2 style="color:black;font-size: 1.8rem; ">Total</h2>
+      </div>
+      <div>
+        <h2 style="color:black;font-size: 1.5rem;text-align:left; ">$ {{valorAcumulado}}</h2>
+      </div>
+
+    </div>
+    <button ion-button (click)="comprar()"  item-end icon-left style="text-align:center;width:100%;background-color:#FB5B5B;color:white;"
+      >
+      Comprar
+    </button>
+
+
+
+  </ion-scroll>
+</ion-content>

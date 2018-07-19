@@ -1,0 +1,113 @@
+page-home {
+    .toolbar-background-md {
+        background: #FB5B5B;
+    }
+
+    .toolbar-title-md {
+        color: white;
+    }
+    .navbar {
+        overflow: hidden;
+        background-color: #FB5B5B;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .navbar a {
+        float: left;
+        font-size: 16px;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    .dropdown {
+        float: left;
+        overflow: hidden;
+    }
+    
+    .dropdown .dropbtn {
+        cursor: pointer;
+        font-size: 16px;    
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+    }
+    
+    .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+        background-color: black;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: #FB5B5B;
+    }
+
+    .dropdown-contenta {
+        margin-left: 15%;
+        display: none;
+        background-color:#f9f9f9;
+    }
+
+    .dropdown-contentb {
+        margin-left: 15%;
+        display: block;
+        background-color:#f9f9f9;
+    }
+
+
+    .dropdown-contentc {
+        margin-left: 25%;
+        display: none;
+        background-color:#f9f9f9;
+    }
+
+    .dropdown-contentd {
+        margin-left: 25%;
+        display: block;
+        background-color:#f9f9f9;
+    }
+     
+    .show {
+        display: block;
+    }
+
+    .display{
+        display: block;
+
+    }
+    .display2{
+        display: none;
+
+    }
+    @media screen and (min-width : 100px) and (max-width : 768px)  {
+    .display{
+        display: none;
+    }
+    .display2{
+        display: block;
+    }
+  }
+
+}
